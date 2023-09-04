@@ -1,51 +1,40 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
 public class Main {
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Reservation System");
-        JButton login = new JButton("Login");
-        JButton reservation= new JButton("Reservation");
-        JButton cancel = new JButton("Cancel");
+    void run(){
+        JFrame frame = new JFrame("Login");
 
-        login.addActionListener(new ActionListener() {
+        JLabel idLabel = new JLabel("User ID");
+        JTextField userId = new JTextField();
+
+        JLabel pass = new JLabel("Password");
+        JPasswordField password = new JPasswordField();
+
+        JButton submit = new JButton("Submit");
+
+        submit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String username = userId.getText();
                 frame.dispose();
-                Login l = new Login();
+                Home h = new Home();
             }
         });
 
-        reservation.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.dispose();
-                Reservation l = new Reservation();
-            }
-        });
+        idLabel.setBounds(510,285,150,30);
+        userId.setBounds(690,285,200,30);
+        pass.setBounds(510,335,150,30);
+        password.setBounds(690,335,200,30);
+        submit.setBounds(710,375,100,40);
 
-
-        cancel.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.dispose();
-                Cancellation l = new Cancellation();
-            }
-        });
-
-
-
-
-        login.setBounds(690,200,200,55);
-        reservation.setBounds(690,280,200,55);
-        cancel.setBounds(690,360,200,55);
-
-
-        frame.add(login);
-        frame.add(reservation);
-        frame.add(cancel);
+        frame.add(idLabel);
+        frame.add(userId);
+        frame.add(pass);
+        frame.add(password);
+        frame.add(submit);
 
 
         frame.setLayout(null);
@@ -53,4 +42,10 @@ public class Main {
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
+    public static void main(String[] args) {
+        Main m = new Main();
+        m.run();
+    }
+
+
 }
