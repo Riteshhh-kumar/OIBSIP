@@ -1,4 +1,3 @@
-import java.util.Date;
 import java.util.HashMap;
 
 public class ReservationSystem {
@@ -22,7 +21,7 @@ public class ReservationSystem {
         private int age;
         private String gender;
     }
-    public void  buyTicket(){
+    public void  buyTicket(String name, int age, String gender, String from, String to, String date, String trainName, int trainNumber, String classType){
         Ticket t = new Ticket();
 
 

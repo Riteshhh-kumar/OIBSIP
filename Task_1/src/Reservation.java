@@ -1,6 +1,11 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Reservation {
     Reservation()
@@ -38,6 +43,7 @@ public class Reservation {
         age.setBounds(560,140,100,30);
         Age.setBounds(670,140,200,30);
 
+        JComboBox
         JLabel gender = new JLabel("Gender");
         JTextField Gender = new JTextField();
         gender.setBounds(560,180,100,30);
@@ -54,10 +60,14 @@ public class Reservation {
         To.setBounds(670,260,200,30);
 
 
+
         JLabel date = new JLabel("Date");
-        JTextField Date = new JTextField();
+        DateFormat df = new SimpleDateFormat("DD/MM/YYYY");
+        JFormattedTextField Date = new JFormattedTextField(df);
         date.setBounds(560,300,100,30);
         Date.setBounds(670,300,200,30);
+
+
 
 
         JLabel classType = new JLabel("Class Type");
@@ -125,7 +135,18 @@ public class Reservation {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ReservationSystem r = new ReservationSystem();
-                r.buyTicket();
+                String name = Name.getText();
+                int age = Integer.parseInt(Age.getText());
+                String gender = Gender.getText();
+                String from = From.getText();
+                String to = To.getText();
+                String date = Date.getText();
+                String trainName = TrainName.getText();
+                int trainNumber = Integer.parseInt(TrainNumber.getText());
+                String classType = String.valueOf(ClassType.getSelectedItem());
+
+
+                r.buyTicket(name,age,gender,from,to,date,trainName,trainNumber,classType);
             }
         });
 
