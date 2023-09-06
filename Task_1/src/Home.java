@@ -26,6 +26,8 @@ public class Home {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
                 Reservation l = new Reservation();
+
+
             }
         });
 
