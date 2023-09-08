@@ -13,8 +13,8 @@ public class Home {
         logout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.dispose();
                 Main m = new Main();
+                frame.dispose();
                 m.run();
             }
         });
@@ -24,8 +24,8 @@ public class Home {
         reservation.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.dispose();
                 Reservation l = new Reservation();
+                frame.dispose();
 
 
             }
@@ -35,8 +35,8 @@ public class Home {
         cancel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.dispose();
                 Cancellation l = new Cancellation();
+                frame.dispose();
             }
         });
 

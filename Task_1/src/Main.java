@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 public class Main {
     void run(){
         JFrame frame = new JFrame("Login");
+        Users u = new Users();
 
         JLabel idLabel = new JLabel("User ID");
         JTextField userId = new JTextField();
@@ -15,12 +16,27 @@ public class Main {
 
         JButton submit = new JButton("Submit");
 
+        JLabel error = new JLabel();
+        error.setVisible(false);
+        error.setBounds(700,400,100,40);
+        frame.add(error);
+
         submit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String username = userId.getText();
-                frame.dispose();
-                Home h = new Home();
+                String pass = password.getText();
+
+                if(Users.userList.containsKey(username)){
+                    if(Users.userList.get(username).equals(pass)){
+                        Home h = new Home();
+                        frame.dispose();
+                    }
+                    error.setText("Wrong Password");
+                    error.setVisible(true);
+                }
+                error.setText("No user found");
+                error.setVisible(true);
             }
         });
 

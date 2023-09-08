@@ -13,11 +13,12 @@ public class Reservation {
         JFrame frame = new JFrame("Reservation");
 
         ReservationSystem r = new ReservationSystem();
-        r.addTrain(123,"HELLO");
+
 
         JLabel error = new JLabel("Enter a valid Train Number");
         error.setVisible(false);
         error.setBounds(600,520,300,40);
+        frame.add(error);
         String []arr = {"Sleeper","AC"};
 
 
@@ -28,8 +29,8 @@ public class Reservation {
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.dispose();
                 Home h = new Home();
+                frame.dispose();
             }
         });
 
@@ -43,9 +44,10 @@ public class Reservation {
         age.setBounds(560,140,100,30);
         Age.setBounds(670,140,200,30);
 
-        JComboBox
+//        JComboBox
+        String arr1[]={"Male","Female","Other"};
         JLabel gender = new JLabel("Gender");
-        JTextField Gender = new JTextField();
+        JComboBox Gender = new JComboBox(arr1);
         gender.setBounds(560,180,100,30);
         Gender.setBounds(670,180,200,30);
 
@@ -62,7 +64,7 @@ public class Reservation {
 
 
         JLabel date = new JLabel("Date");
-        DateFormat df = new SimpleDateFormat("DD/MM/YYYY");
+        DateFormat df = new SimpleDateFormat("dd/mm/yyyy");
         JFormattedTextField Date = new JFormattedTextField(df);
         date.setBounds(560,300,100,30);
         Date.setBounds(670,300,200,30);
@@ -91,13 +93,13 @@ public class Reservation {
         getName.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ReservationSystem r = new ReservationSystem();
                 int key =Integer.parseInt(TrainNumber.getText());
                 String name = r.trains.get(key);
                 if(name!=null)
                 TrainName.setText(name);
 
                 else{
+                    error.setText("Enter a valid Train Number");
                     error.setVisible(true);
                 }
             }
@@ -134,10 +136,9 @@ public class Reservation {
         book.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ReservationSystem r = new ReservationSystem();
                 String name = Name.getText();
                 int age = Integer.parseInt(Age.getText());
-                String gender = Gender.getText();
+                String gender = String.valueOf(Gender.getSelectedItem());
                 String from = From.getText();
                 String to = To.getText();
                 String date = Date.getText();
@@ -146,7 +147,10 @@ public class Reservation {
                 String classType = String.valueOf(ClassType.getSelectedItem());
 
 
-                r.buyTicket(name,age,gender,from,to,date,trainName,trainNumber,classType);
+                int book_pnr=r.buyTicket(name,age,gender,from,to,date,trainName,trainNumber,classType);
+
+                error.setVisible(true);
+                error.setText("Your PNR number is "+book_pnr);
             }
         });
 
