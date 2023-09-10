@@ -85,8 +85,9 @@ public class Main {
     }
 
     private static boolean quit(Bank bank,int choice) {
-        if(choice==5)
-        return bank.quit();
+        if(choice==5){
+            return bank.quit();
+        }
 
         return true;
     }

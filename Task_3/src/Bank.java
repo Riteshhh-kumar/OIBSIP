@@ -55,7 +55,7 @@ class Bank{
         }
         return false;
     }
-    class Account{
+    static class Account{
         private int balance;
         private ArrayList<Integer> history = new ArrayList<>();
 
@@ -87,6 +87,8 @@ class Bank{
     }
     
     public void transactionHistory(){
+        System.out.println("Balance amount is :"+this.banking.get(currentAccount).getBalance());
+
         for(int amount:this.banking.get(currentAccount).getHistory()){
             if(amount<0){
                 System.out.println("Withdraw |   "+Math.abs(amount));
