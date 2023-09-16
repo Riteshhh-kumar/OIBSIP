@@ -57,7 +57,6 @@ class Game{
                     Game.takeUserInput(num,attempts);
                 System.out.println("Thank you for playing number guessing Game.");
 
-
                 break;
 
             }

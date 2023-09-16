@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 class Bank{
     Scanner sc = new Scanner(System.in);
-    private int  currentAccount=0;
+    private static int  currentAccount=0;
     private HashMap<Integer,Integer> authenticationList = new HashMap<>();
     private HashMap<Integer,Account> banking = new HashMap<>();
     Bank(){
@@ -29,10 +29,10 @@ class Bank{
         banking.put(123456789,acc1);
 
         authenticationList.put(987654321,4567);
-        banking.put(123456789,acc1);
+        banking.put(987654321,acc1);
 
         authenticationList.put(123789456,9510);
-        banking.put(123456789,acc1);
+        banking.put(123789456,acc1);
     }
 
     public boolean authenticate(int id){
@@ -111,6 +111,7 @@ class Bank{
     
     
     public void transfer(int amount,int account){
+
         int balanceAmountSender=this.banking.get(currentAccount).getBalance()-amount;
         this.banking.get(currentAccount).setBalance(balanceAmountSender);
         this.banking.get(currentAccount).setHistory(-amount);

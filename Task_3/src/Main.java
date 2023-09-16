@@ -25,22 +25,30 @@ public class Main {
                     System.out.println("----------------------------------------");
                     switch (choice){
                         case 1:{
-                            Main.transactionHistory(bank);
+                            bank.transactionHistory();
                             validOption=false;
                             break;
                         }
                         case 2:{
-                            Main.withdraw(bank);
+                            System.out.println("Enter the amount.");
+                            int amount = sc.nextInt();
+                            bank.withdraw(amount);
                             validOption=false;
                             break;
                         }
                         case 3:{
-                            Main.deposit(bank);
+                            System.out.println("Enter the amount.");
+                            int amount = sc.nextInt();
+                            bank.deposit(amount);
                             validOption=false;
                             break;
                         }
                         case 4:{
-                            Main.transfer(bank);
+                            System.out.println("Enter the id in which you want to transfer the amount.");
+                            int transferid = sc.nextInt();
+                            System.out.println("Enter the amount.");
+                            int amount = sc.nextInt();
+                            bank.transfer(amount,transferid);
                             validOption=false;
                             break;
                         }
@@ -60,33 +68,9 @@ public class Main {
             }
         }
     }
-
-    private static void transactionHistory(Bank bank) {
-        bank.transactionHistory();
-    }
-
-    private static void withdraw(Bank bank) {
-        System.out.println("Enter the amount.");
-        int amount = sc.nextInt();
-        bank.withdraw(amount);
-    }
-
-    private static void deposit(Bank bank) {
-        System.out.println("Enter the amount.");
-        int amount = sc.nextInt();
-        bank.deposit(amount);
-    }
-
-    private static void transfer(Bank bank) {
-        System.out.println("Enter the id in which you want to transfer the amount.");
-        int id = sc.nextInt();
-        int amount = sc.nextInt();
-        bank.transfer(amount,id);
-    }
-
     private static boolean quit(Bank bank,int choice) {
         if(choice==5){
-            return bank.quit();
+            return false;
         }
 
         return true;
