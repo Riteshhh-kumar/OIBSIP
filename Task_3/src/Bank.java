@@ -29,10 +29,10 @@ class Bank{
         banking.put(123456789,acc1);
 
         authenticationList.put(987654321,4567);
-        banking.put(987654321,acc1);
+        banking.put(987654321,acc2);
 
         authenticationList.put(123789456,9510);
-        banking.put(123789456,acc1);
+        banking.put(123789456,acc3);
     }
 
     public boolean authenticate(int id){
